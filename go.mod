@@ -4,7 +4,6 @@ go 1.21.6
 
 require (
 	github.com/go-playground/validator/v10 v10.17.0
-	github.com/joho/godotenv v1.5.1
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/swaggo/echo-swagger v1.4.1
 	github.com/swaggo/swag v1.16.3

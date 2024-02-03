@@ -4,8 +4,6 @@ import (
 	"os"
 
 	"github.com/6un3u/witb_backend/router"
-	"github.com/6un3u/witb_backend/utils"
-	"github.com/joho/godotenv"
 )
 
 type indexData struct {
@@ -13,12 +11,10 @@ type indexData struct {
 }
 
 func main() {
-	err := godotenv.Load(".env")
-	utils.HandleErr(err)
-
 	e := router.Router()
+	print(os.Getenv("ENV"))
 
-	if os.Getenv("DEBUG") == "true" {
+	if os.Getenv("ENV") == "DEV" {
 		e.Debug = true
 	} else {
 		e.Debug = false

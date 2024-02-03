@@ -7,13 +7,9 @@ import (
 
 	"github.com/6un3u/witb_backend/handlers"
 	"github.com/6un3u/witb_backend/utils"
-	"github.com/joho/godotenv"
 )
 
 func TestMakeSearchResult(t *testing.T) {
-	err := godotenv.Load("../.env")
-	utils.HandleErr(err)
-
 	books := handlers.MakeSearchResult("희랍어 시간")
 
 	if len(books) == 0 {
