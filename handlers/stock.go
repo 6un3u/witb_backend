@@ -44,10 +44,10 @@ type stockResponse struct {
 }
 
 type StockByStore struct {
-	Store  string `json:"store"`
-	Adress string `json:"adress"`
-	Phone  string `json:"phone"`
-	Stock  int    `json:"stock"`
+	Store   string `json:"store"`
+	Address string `json:"address"`
+	Phone   string `json:"phone"`
+	Stock   int    `json:"stock"`
 }
 
 // @Summery Stock of Book
@@ -98,7 +98,7 @@ func makeStockResult(id string) [][]StockByStore {
 func extractStock(strInfo storeInfo) StockByStore {
 	var stockInfo StockByStore
 	stockInfo.Store = strInfo.StrName
-	stockInfo.Adress = strInfo.StrAdrs
+	stockInfo.Address = strInfo.StrAdrs
 	stockInfo.Phone = strInfo.StrTlnm
 	stockInfo.Stock = strInfo.RealInvnQntt
 	return stockInfo
