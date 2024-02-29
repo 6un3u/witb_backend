@@ -21,7 +21,7 @@ import (
 func Router() *echo.Echo {
 	e := echo.New()
 
-	e.Use(slogecho.NewWithConfig(utils.SlogLogger, utils.SlogConfig))
+	e.Use(slogecho.NewWithConfig(utils.GetEcsSlogger(), utils.SlogConfig))
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"*"},

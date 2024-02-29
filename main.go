@@ -12,7 +12,6 @@ type indexData struct {
 
 func main() {
 	e := router.Router()
-	print(os.Getenv("ENV"))
 
 	if os.Getenv("ENV") == "DEV" {
 		e.Debug = true
