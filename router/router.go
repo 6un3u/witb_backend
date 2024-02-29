@@ -48,11 +48,8 @@ func Router() *echo.Echo {
 	})
 	e.GET("/swagger/*", echoSwagger.WrapHandler, devOnlyMiddleware)
 
-	api := e.Group("/api")
-	{
-		api.POST("/search", handlers.SearchHandler)
-		api.POST("/stock", handlers.StockHandler)
-	}
+	e.POST("/search", handlers.SearchHandler)
+	e.POST("/stock", handlers.StockHandler)
 
 	return e
 }
