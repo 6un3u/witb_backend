@@ -10,6 +10,7 @@ import (
 	"github.com/6un3u/witb_backend/utils"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	slogecho "github.com/samber/slog-echo"
 	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
@@ -20,17 +21,14 @@ import (
 func Router() *echo.Echo {
 	e := echo.New()
 
-	// Set Middleware
-	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-		Format:           "${time_custom} ${status} ${method} ${uri}" + "\n",
-		CustomTimeFormat: "2006-01-02 15:04:05",
-	}))
+	e.Use(slogecho.NewWithConfig(utils.SlogLogger, utils.SlogConfig))
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"*"},
 		AllowMethods: []string{http.MethodGet, http.MethodPost},
 	}))
-	// Set access control for Dev
+
+	// Set access control to DEV only
 	devOnlyMiddleware := func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			if e.Debug {

@@ -1,5 +1,6 @@
 *.env
 *.o
+*.log
 
 swagger.json
 swagger.yaml
